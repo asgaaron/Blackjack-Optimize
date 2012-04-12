@@ -1,3 +1,4 @@
 Uses a genetic algorithm to find and optimal strategy for blackjack.
 
 Working on retooling the betting decisions, it's a bit weird right now.
+sol.txt has some results from running it a while before I started adding betting strategy
