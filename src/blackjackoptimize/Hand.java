@@ -5,17 +5,23 @@ import java.util.List;
 
 public class Hand {
     public static enum Value {
-        BUST(-1), HARD_10(10), HARD_11(11), HARD_12(12), HARD_13(13), HARD_14(14), HARD_15(15), HARD_16(16), HARD_17(17), HARD_18(18), HARD_19(19), HARD_20(20), HARD_21(
-                21), HARD_4(4), HARD_5(5), HARD_6(6), HARD_7(7), HARD_8(8), HARD_9(9), SOFT_12(12), SOFT_13(13), SOFT_14(14), SOFT_15(15), SOFT_16(16), SOFT_17(
-                17), SOFT_18(18), SOFT_19(19), SOFT_20(20), SOFT_21(21);
+        BUST(-1, false), HARD_10(10, true), HARD_11(11, false), HARD_12(12, true), HARD_13(13, false), HARD_14(14, true), HARD_15(15, false), HARD_16(16, true), HARD_17(17, false), HARD_18(18, true), HARD_19(19, false), HARD_20(20, true), HARD_21(
+                21, false), HARD_4(4, true), HARD_5(5, false), HARD_6(6, true), HARD_7(7, false), HARD_8(8, true), HARD_9(9, false), SOFT_12(12, true), SOFT_13(13, false), SOFT_14(14, false), SOFT_15(15, false), SOFT_16(16, false), SOFT_17(
+                17, false), SOFT_18(18, false), SOFT_19(19, false), SOFT_20(20, false), SOFT_21(21, false);
         private final int value;
+        private final boolean splittable;
 
-        private Value(final int value) {
+        private Value(final int value, final boolean splittable) {
             this.value = value;
+            this.splittable = splittable;
         }
 
         public int getValue() {
             return value;
+        }
+        
+        public boolean splittable() {
+           return splittable;
         }
     }
 

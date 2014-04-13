@@ -13,7 +13,7 @@ public class PlayerStrategyFactory extends AbstractSolutionFactory<PlayerStrateg
     public PlayerStrategy randomSolution() {
         final Map<Value, Action> strategy = new HashMap<Value, Action>();
         for(final Value hand : Value.values()) {
-            strategy.put(hand, BlackjackStrategy.randomAction());
+            strategy.put(hand, BlackjackStrategy.randomAction(hand.splittable()));
         }
         strategy.put(Value.BUST, Action.STAND);
         return new PlayerStrategy(strategy);

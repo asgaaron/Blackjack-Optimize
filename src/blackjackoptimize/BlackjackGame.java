@@ -35,7 +35,7 @@ public class BlackjackGame {
         return shoe;
     }
 
-    public int playAHand(final int bet) {
+    public Pair<Integer, Integer> playAHand(int bet) {
         final List<Card> shoe = buildShoe();
         final Hand dealerHand = new Hand(shoe.remove(0), shoe.remove(0));
         final List<Pair<Hand, Integer>> playerHands = new ArrayList<Pair<Hand, Integer>>();
@@ -54,11 +54,13 @@ public class BlackjackGame {
                     case DOUBLE:
                         hand.getLeft().add(shoe.remove(0));
                         hand.setRight(hand.getRight() * 2);
+                        bet += hand.getRight();
                         done = true;
                     case SPLIT_OR_HIT:
                         Hand newHand = splitHand(hand.getLeft(), shoe);
                         if(newHand != null) {
                             playerHands.add(new Pair<Hand, Integer>(newHand, hand.getRight()));
+                            bet += hand.getRight();
                         }
                         else {
                             hand.getLeft().add(shoe.remove(0));
@@ -67,6 +69,7 @@ public class BlackjackGame {
                         newHand = splitHand(hand.getLeft(), shoe);
                         if(newHand != null) {
                             playerHands.add(new Pair<Hand, Integer>(newHand, hand.getRight()));
+                            bet += hand.getRight();
                         }
                     case SPLIT_OR_DOUBLE:
                         newHand = splitHand(hand.getLeft(), shoe);
@@ -78,6 +81,7 @@ public class BlackjackGame {
                             hand.setRight(hand.getRight() * 2);
                             done = true;
                         }
+                        bet += hand.getRight();
                     case STAND:
                         done = true;
                 }
@@ -110,15 +114,20 @@ public class BlackjackGame {
                 total += hand.getRight();
             }
         }
-        return total;
+        
+        return new Pair<Integer, Integer>(total, bet);
     }
 
-    public int playNHands(final int n, final int bet) {
-        int total = 0;
+    public Pair<Integer, Integer> playNHands(final int n, final int bet) {
+        int totalReturned = 0;
+        int totalBet = 0;
         for(int i = 0; i < n; i++) {
-            total += playAHand(bet);
+            Pair<Integer, Integer> results = playAHand(bet);
+            totalReturned += results.getLeft();
+            totalBet += results.getRight();
         }
-        return total;
+
+        return new Pair<Integer, Integer>(totalReturned, totalBet);
     }
 
     private Hand splitHand(final Hand hand, final List<Card> shoe) {

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lib.easyjava.ml.optimization.ga.GeneticAlgorithmSolution;
+import lib.easyjava.type.Pair;
 import blackjackoptimize.BlackjackGame;
 import blackjackoptimize.BlackjackStrategy;
 import blackjackoptimize.DealerStrategy;
@@ -19,6 +20,7 @@ public class PlayerStrategy extends BlackjackStrategy implements GeneticAlgorith
     private static final int NUM_ROUNDS = 1000;
     
     private long fitness;
+    private long totalBet;
     private boolean scored;
     private final Map<Value, Action> strategy;
 
@@ -62,8 +64,10 @@ public class PlayerStrategy extends BlackjackStrategy implements GeneticAlgorith
             return fitness;
         }
         final BlackjackGame scorer = new BlackjackGame(NUM_DECKS, DEALER_STRATEGY, this);
-        fitness = scorer.playNHands(NUM_ROUNDS, BET);
+        Pair<Integer, Integer> results = scorer.playNHands(NUM_ROUNDS, BET);
         scored = true;
+        fitness = results.getLeft();
+        totalBet = results.getRight();
         return fitness;
     }
 
@@ -79,11 +83,13 @@ public class PlayerStrategy extends BlackjackStrategy implements GeneticAlgorith
             value = HANDS[(int)(Math.random() * HANDS_LENGTH)];
         }
         while(value == Value.BUST);
-        strategy.put(value, randomAction());
+        
+        strategy.put(value, randomAction(value.splittable()));
     }
 
     public double returnPercentage() {
-        return 100.0 + 100.0 * (fitness() / ((double)NUM_ROUNDS * (double)BET));
+        fitness();
+        return 100.0 + 100.0 * ((double)fitness / (double)totalBet);
     }
 
     @Override
