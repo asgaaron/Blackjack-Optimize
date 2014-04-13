@@ -42,6 +42,10 @@ public class Hand {
         cards.add(card);
     }
 
+    public boolean isBlackjack() {
+        return cards.size() == 2 && value().value == 21;
+    }
+    
     public Hand split() {
         if(cards.size() != 2 || cards.get(0).type != cards.get(1).type) {
             return null;

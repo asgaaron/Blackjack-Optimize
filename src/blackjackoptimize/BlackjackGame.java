@@ -102,6 +102,10 @@ public class BlackjackGame {
                 total -= hand.getRight();
                 continue;
             }
+            if(hand.getLeft().isBlackjack()) {
+                total += hand.getRight() * 1.5;
+                continue;
+            }
             if(dealerHand.value() == Value.BUST) {
                 total += hand.getRight();
                 continue;

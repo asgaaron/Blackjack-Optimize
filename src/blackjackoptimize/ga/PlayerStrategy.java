@@ -12,7 +12,7 @@ import blackjackoptimize.Hand;
 import blackjackoptimize.Hand.Value;
 
 public class PlayerStrategy extends BlackjackStrategy implements GeneticAlgorithmSolution {
-    private static final int BET = 1;
+    private static final int BET = 2;
     private static final DealerStrategy DEALER_STRATEGY = new DealerStrategy(true);
     private static final Value[] HANDS = Value.values();
     private static final double HANDS_LENGTH = HANDS.length;
