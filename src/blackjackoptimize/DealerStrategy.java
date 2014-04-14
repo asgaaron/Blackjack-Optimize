@@ -8,7 +8,7 @@ public class DealerStrategy extends BlackjackStrategy {
     }
 
     @Override
-    public Action getAction(final Hand hand) {
+    public Action getAction(final Hand hand, final Card dealerFaceUp) {
         switch(hand.value()) {
             case BUST:
                 return Action.STAND;

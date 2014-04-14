@@ -9,7 +9,7 @@ import blackjackoptimize.ga.PlayerStrategy;
 import blackjackoptimize.ga.PlayerStrategyFactory;
 
 public class OptimizeBlackjack {
-    private static final int NUM_GENERATIONS = 100;
+    private static final int NUM_GENERATIONS = 100000;
 
     private static void logGeneration(final List<PlayerStrategy> generation) {
         final StringBuilder sb = new StringBuilder();
@@ -27,7 +27,7 @@ public class OptimizeBlackjack {
     }
 
     public static void main(final String[] args) {
-        final GeneticAlgorithmOptimizer<PlayerStrategy> optimizer = new GeneticAlgorithmOptimizer<PlayerStrategy>(40, .25, .6, .2, new PlayerStrategyFactory());
+        final GeneticAlgorithmOptimizer<PlayerStrategy> optimizer = new GeneticAlgorithmOptimizer<PlayerStrategy>(40, .9, .8, .2, new PlayerStrategyFactory());
         for(int i = 1; i < NUM_GENERATIONS; i++) {
             final List<PlayerStrategy> generation = optimizer.population();
             System.out.println("BEST SCORE FOR GENERATION " + i + ": " + generation.get(0).fitness());
