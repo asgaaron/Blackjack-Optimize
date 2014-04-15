@@ -47,7 +47,7 @@ public class BlackjackGame {
             done = false;
             do {
                 final Pair<Hand, Integer> hand = playerHands.get(i);
-                action = player.getAction(hand.getLeft(), dealerHand.faceUp());
+                action = player.getAction(hand.getLeft().value(), dealerHand.faceUp().type);
                 switch(action) {
                     case HIT:
                         hand.getLeft().add(shoe.remove(0));
@@ -95,7 +95,7 @@ public class BlackjackGame {
             i++;
         }
         do {
-            action = dealer.getAction(dealerHand, null);
+            action = dealer.getAction(dealerHand.value(), null);
             if(action == Action.HIT) {
                 dealerHand.add(shoe.remove(0));
             }

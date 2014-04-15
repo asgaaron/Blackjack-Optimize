@@ -2,6 +2,9 @@ package blackjackoptimize;
 
 import java.util.EnumSet;
 
+import blackjackoptimize.Card.Type;
+import blackjackoptimize.Hand.Value;
+
 public abstract class BlackjackStrategy {
     public static enum Action {
         DOUBLE, HIT, SPLIT_OR_DOUBLE, SPLIT_OR_HIT, SPLIT_OR_STAND, STAND
@@ -21,5 +24,5 @@ public abstract class BlackjackStrategy {
         }
     }
 
-    public abstract Action getAction(Hand hand, Card dealerFaceUp);
+    public abstract Action getAction(Value hand, Type dealerFaceUp);
 }

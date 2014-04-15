@@ -8,10 +8,8 @@ import lib.easyjava.ml.optimization.ga.GeneticAlgorithmSolution;
 import lib.easyjava.type.Pair;
 import blackjackoptimize.BlackjackGame;
 import blackjackoptimize.BlackjackStrategy;
-import blackjackoptimize.Card;
 import blackjackoptimize.Card.Type;
 import blackjackoptimize.DealerStrategy;
-import blackjackoptimize.Hand;
 import blackjackoptimize.Hand.Value;
 
 public class PlayerStrategy extends BlackjackStrategy implements GeneticAlgorithmSolution, Serializable {
@@ -89,8 +87,8 @@ public class PlayerStrategy extends BlackjackStrategy implements GeneticAlgorith
     }
 
     @Override
-    public Action getAction(final Hand hand, final Card dealerFaceUp) {
-        return strategy.get(hand.value()).get(dealerFaceUp.type);
+    public Action getAction(final Value hand, final Type dealerFaceUp) {
+        return strategy.get(hand).get(dealerFaceUp);
     }
 
     @Override

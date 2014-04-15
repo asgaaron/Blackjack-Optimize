@@ -1,11 +1,14 @@
 package blackjackoptimize;
 
+import blackjackoptimize.Card.Type;
+import blackjackoptimize.Hand.Value;
+
 public class BasicStrategy extends BlackjackStrategy {
     @Override
-    public Action getAction(final Hand hand, final Card dealerFaceUp) {
-        switch(hand.value()) {
+    public Action getAction(final Value hand, final Type dealerFaceUp) {
+        switch(hand) {
             case HARD_4:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case TWO:
                         return Action.SPLIT_OR_HIT;
                     case THREE:
@@ -24,7 +27,7 @@ public class BasicStrategy extends BlackjackStrategy {
             case HARD_5:
                 return Action.HIT;
             case HARD_6:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case TWO:
                         return Action.SPLIT_OR_HIT;
                     case THREE:
@@ -43,7 +46,7 @@ public class BasicStrategy extends BlackjackStrategy {
             case HARD_7:
                 return Action.HIT;
             case HARD_8:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case FIVE:
                         return Action.SPLIT_OR_HIT;
                     case SIX:
@@ -52,7 +55,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case HARD_9:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case THREE:
                         return Action.DOUBLE;
                     case FOUR:
@@ -65,7 +68,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case HARD_10:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case ACE:
                         return Action.HIT;
                     case KING:
@@ -80,14 +83,14 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.DOUBLE;
                 }
             case HARD_11:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case ACE:
                         return Action.HIT;
                     default:
                         return Action.DOUBLE;
                 }
             case HARD_12:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case TWO:
                         return Action.SPLIT_OR_HIT;
                     case THREE:
@@ -102,7 +105,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case HARD_13:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case TWO:
                         return Action.STAND;
                     case THREE:
@@ -117,7 +120,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case HARD_14:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case TWO:
                         return Action.SPLIT_OR_STAND;
                     case THREE:
@@ -134,7 +137,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case HARD_15:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case TWO:
                         return Action.STAND;
                     case THREE:
@@ -149,7 +152,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case HARD_16:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case TWO:
                         return Action.SPLIT_OR_STAND;
                     case THREE:
@@ -166,7 +169,7 @@ public class BasicStrategy extends BlackjackStrategy {
             case HARD_17:
                 return Action.STAND;
             case HARD_18:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case SEVEN:
                         return Action.STAND;
                     case TEN:
@@ -191,7 +194,7 @@ public class BasicStrategy extends BlackjackStrategy {
             case SOFT_12:
                 return Action.SPLIT_OR_HIT;
             case SOFT_13:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case FIVE:
                         return Action.DOUBLE;
                     case SIX:
@@ -200,7 +203,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case SOFT_14:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case FIVE:
                         return Action.DOUBLE;
                     case SIX:
@@ -209,7 +212,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case SOFT_15:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case FOUR:
                         return Action.DOUBLE;
                     case FIVE:
@@ -220,7 +223,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case SOFT_16:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case FOUR:
                         return Action.DOUBLE;
                     case FIVE:
@@ -231,7 +234,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case SOFT_17:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case THREE:
                         return Action.DOUBLE;
                     case FOUR:
@@ -244,7 +247,7 @@ public class BasicStrategy extends BlackjackStrategy {
                         return Action.HIT;
                 }
             case SOFT_18:
-                switch(dealerFaceUp.type) {
+                switch(dealerFaceUp) {
                     case TWO:
                         return Action.STAND;
                     case THREE:

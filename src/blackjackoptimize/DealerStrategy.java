@@ -1,5 +1,8 @@
 package blackjackoptimize;
 
+import blackjackoptimize.Card.Type;
+import blackjackoptimize.Hand.Value;
+
 public class DealerStrategy extends BlackjackStrategy {
     private final boolean hitSoft17;
 
@@ -8,8 +11,8 @@ public class DealerStrategy extends BlackjackStrategy {
     }
 
     @Override
-    public Action getAction(final Hand hand, final Card dealerFaceUp) {
-        switch(hand.value()) {
+    public Action getAction(final Value hand, final Type dealerFaceUp) {
+        switch(hand) {
             case BUST:
                 return Action.STAND;
             case SOFT_18:
