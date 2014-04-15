@@ -1,5 +1,6 @@
 package blackjackoptimize.ga;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ import blackjackoptimize.DealerStrategy;
 import blackjackoptimize.Hand;
 import blackjackoptimize.Hand.Value;
 
-public class PlayerStrategy extends BlackjackStrategy implements GeneticAlgorithmSolution {
+public class PlayerStrategy extends BlackjackStrategy implements GeneticAlgorithmSolution, Serializable {
     private static final int BET = 100;
     private static final Type[] CARDS = Type.values();
     private static final double CARDS_LENGTH = CARDS.length;
@@ -22,6 +23,7 @@ public class PlayerStrategy extends BlackjackStrategy implements GeneticAlgorith
     private static final double HANDS_LENGTH = HANDS.length;
     private static final int NUM_DECKS = 6;
     private static final int NUM_ROUNDS = 10000;
+    private static final long serialVersionUID = 3795914867346387162L;
     private long fitness;
     private boolean scored;
     private final Map<Value, Map<Type, Action>> strategy;
